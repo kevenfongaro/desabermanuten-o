@@ -1,9 +1,4 @@
-RewriteEngine on
-
-RewriteCond %{HTTPS} !=on
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !\/$
-RewriteRule ^(.*) /
+# Redirect everything to the homepage (same domain)
+RewriteCond %{REQUEST_URI} ^/. [OR]
+RewriteCond %{QUERY_STRING} .
+RewriteRule ^ http://desaber.com.br/ [QSD,R=301,L]
